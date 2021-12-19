@@ -1,0 +1,25 @@
+  <%- include("includes/header") %>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card o-hidden border-0 shadow-lg mx-auto col-md-10 col-sm-6">
+                <div class="card-body">
+                    <div class="text-center mb-5 d-flex">
+						<h3 class="text-dark-500">Edit <%= items.record  %></h3>
+                        <a href="/" class="btn btn-light ml-5">Back Home</a>
+					</div>
+                    <form action="/update/<%= items.id  %>" id="submit" action="POST">
+                       <div class="form-group">
+                           <input type="hidden" name="id" value="<%= items._id %>">
+                            <input type="text" value="<%= items.record  %>" name="record" id="record" class="form-control" placeholder="Enter the record" required pattern="^[A-Za-z0-9 ]{2,50}$" autofocus="autofocus">
+                       </div>
+                       <div class="form-group">
+                           <button type="submit" class="btn btn-dark">Edit Record</button>
+                       </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <%- include("includes/footer") %>

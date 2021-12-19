@@ -1,0 +1,59 @@
+  <%- include("includes/header") %>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card o-hidden border-0 shadow-lg mx-auto col-md-10 col-sm-6">
+                <div class="card-body">
+                    <div class="text-center mb-5">
+						<a href="/" style="text-decoration:none;">
+                            <h3 class="text-dark-500">TODO LIST</h3>
+                        </a>
+					</div>
+                    <form method="POST" action="/" id="submit">
+                       <div class="form-group">
+                            <input type="text" name="record" id="record" class="form-control" placeholder="Enter the record" required pattern="^[A-Za-z0-9 ]{2,50}$" autofocus="autofocus">
+                       </div>
+                       <div class="form-group">
+                           <button type="submit" class="btn btn-dark">Add Record</button>
+                       </div>
+                    </form>
+                    <% if(todo .length > 0){ %>
+                    <div class="table-responsive">
+                         <table id="example2" class="table table-bordered table-hover">
+                             <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Record</th>
+                                    <th></th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                <% todo.forEach(item=>{ %>
+                                <tr>
+                                    <td><%= item.id %></td>
+                                    <td><%= item.record  %></td>
+                                    <td>
+                                        <a href="/<%=item.id%>" class="btn btn-sm btn-light">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="/edit/<%=item.id%>" class="btn btn-sm btn-light">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-light">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                             </tbody>
+                         </table>
+                    </div>
+                    <% }else{ %>
+                        <p class="text-danger">There are no available records.</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <%- include("includes/footer") %>
